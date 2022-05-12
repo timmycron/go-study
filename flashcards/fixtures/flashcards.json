@@ -1,0 +1,43 @@
+[
+  {
+    "model": "flashcards.deck",
+    "pk": 1,
+    "fields": {
+      "title": "Spanish"
+    }
+  },
+  {
+    "model": "flashcards.deck",
+    "pk": 2,
+    "fields": {
+      "title": "Swahili"
+    }
+  },
+  {
+    "model": "flashcards.flashcard",
+    "pk": 1,
+    "fields": {
+      "question": "Hello",
+      "answer": "Hola",
+      "deck": 1
+    }
+  },
+  {
+    "model": "flashcards.flashcard",
+    "pk": 2,
+    "fields": {
+      "question": "How are you?",
+      "answer": "Como estás?",
+      "deck": 1
+    }
+  },
+  {
+    "model": "flashcards.flashcard",
+    "pk": 3,
+    "fields": {
+      "question": "Hello",
+      "answer": "Habari",
+      "deck": 2
+    }
+  }
+]
