@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'graphene_django',
     'flashcards',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -124,7 +125,19 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Set up graphene-django to use the proper schema
+# Set up graphene-django to use the proper schema and JWT
 GRAPHENE = {
-    "SCHEMA": "go_study.schema.schema"
+    "SCHEMA": "go_study.schema.schema",
+    "MIDDLEWARE": [
+        "graphql_jwt.middleware.JSONWebTokenMiddleware",
+    ],
 }
+
+# Tell our project to use our custom user model
+AUTH_USER_MODEL = "users.User"
+
+# Setup for JWT
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend'
+]
