@@ -3,14 +3,16 @@
     "model": "flashcards.deck",
     "pk": 1,
     "fields": {
-      "title": "Spanish"
+      "title": "Spanish",
+      "description": "Learn some Spanish"
     }
   },
   {
     "model": "flashcards.deck",
     "pk": 2,
     "fields": {
-      "title": "Swahili"
+      "title": "Swahili",
+      "description": "Learn some Swahili"
     }
   },
   {

@@ -126,5 +126,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Set up graphene-django to use the proper schema
 GRAPHENE = {
-    "SCHEMA": "flashcards.graphql.schema.schema"
+    "SCHEMA": "go_study.schema.schema"
 }
