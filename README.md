@@ -47,6 +47,16 @@ query {
 }
 ```
 
+### Unit Testing
+
+Open a Terminal window, change directory into the base project directory
+that contains `manage.py`, and run the following:
+
+```commandline
+conda activate go-study
+pytest
+```
+
 ## Development
 
 The `master` branch is our production branch. The `develop` branch is our development branch.
