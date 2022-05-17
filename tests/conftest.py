@@ -8,9 +8,9 @@ Herein lies pytest configurations and fixtures useful for testing the entire pro
 
 
 @pytest.fixture
-def unauthenticated_client(base_user) -> JSONWebTokenClient:
+def unauthenticated_client() -> JSONWebTokenClient:
     """
-    Fixture to allow tests to use an unauthenticated client. Creates a user as a side effect.
+    Fixture to allow tests to use an unauthenticated client
     :return: JSONWebTokenClient
     """
     client = JSONWebTokenClient()
@@ -18,7 +18,7 @@ def unauthenticated_client(base_user) -> JSONWebTokenClient:
 
 
 @pytest.fixture
-def authenticated_client(base_user) -> JSONWebTokenClient:
+def authenticated_client(base_user: User) -> JSONWebTokenClient:
     """
     Fixture to allow tests to use an authenticated client. Creates a user as a side effect.
     :return: JSONWebTokenClient
