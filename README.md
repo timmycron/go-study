@@ -5,6 +5,57 @@ to create and view flashcard decks for studying.
 
 The main goal is a quick 'n' easy project to display Django skillz.
 
+## GraphQL
+
+This application exposes a single URL `http://<base-domain>/graphQL/` that allows consumers
+to perform a number of queries and mutations.
+
+### Authentication
+
+All authentication is handled with JWT. See https://django-graphql-jwt.domake.io/index.html
+for the available queries and mutations.
+
+Additionally, we allow you to query for the current logged-in user with the following:
+
+```text
+query {
+    currentUser {
+        email
+    }
+}
+```
+
+### Flashcards and Decks
+
+We have two available queries, both require the user to be authenticated.
+
+To query for a list of all available flashcard decks, use the following.
+
+```text
+query {
+    decks {
+        title
+        description
+    }
+}
+```
+
+To query for a specific deck and get a list of its flashcards, use the following. Make sure
+to use the deck's real ID.
+
+```text
+query {
+    deck(id: <int>) {
+        title
+        description
+        flashcards {
+            answer
+            question
+        }
+    }
+}
+```
+
 ## Running Locally
 
 ### Installation
@@ -35,17 +86,8 @@ python manage.py runserver
 
 Before executing the `runserver` command above, run `python manage.py loaddata flashcards`.
 
-Open a browser window to http://127.0.0.1:8000/graphql/ and run some queries. Here's an example:
-
-```
-query {
-  allFlashcards {
-    id
-    question
-    answer
-  }
-}
-```
+Open a browser window to http://127.0.0.1:8000/graphql/ and run the queries listed in the 
+Flashcards and Decks section.
 
 ### Unit Testing
 
