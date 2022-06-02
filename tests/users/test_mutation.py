@@ -10,7 +10,7 @@ def test_create_user(db, unauthenticated_client: JSONWebTokenClient):
     """
     mutation = '''
         mutation {
-            userCreate(email: "test@test.com", password: "test") {
+            createUser(email: "test@test.com", password: "test") {
                 user {
                     email
                 }
@@ -19,7 +19,7 @@ def test_create_user(db, unauthenticated_client: JSONWebTokenClient):
     '''
     content = unauthenticated_client.execute(mutation).to_dict()
     assert 'errors' not in content
-    assert content == {'data': {'userCreate': {'user': {'email': 'test@test.com'}}}}
+    assert content == {'data': {'createUser': {'user': {'email': 'test@test.com'}}}}
 
 
 def test_login(base_user: User, unauthenticated_client: JSONWebTokenClient):
@@ -30,11 +30,11 @@ def test_login(base_user: User, unauthenticated_client: JSONWebTokenClient):
     """
     mutation = f'''
         mutation {{
-            tokenAuth(email: "{DEFAULT_EMAIL}", password: "{DEFAULT_PASSWORD}") {{
+            authenticateWithJwt(email: "{DEFAULT_EMAIL}", password: "{DEFAULT_PASSWORD}") {{
                 token
             }}
         }}
     '''
     content = unauthenticated_client.execute(mutation).to_dict()
     assert 'errors' not in content
-    assert content['data']['tokenAuth']['token']
+    assert content['data']['authenticateWithJwt']['token']

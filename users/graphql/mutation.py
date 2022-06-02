@@ -6,7 +6,7 @@ from graphql_jwt import ObtainJSONWebToken, Verify, Refresh, DeleteJSONWebTokenC
 User = get_user_model()
 
 
-class UserCreate(Mutation):
+class CreateUser(Mutation):
     """
     This class allows us to create a user via a GraphQL mutation
     """
@@ -21,12 +21,12 @@ class UserCreate(Mutation):
         Override the mutate function to create and save the user
         :param email: str
         :param password: str
-        :return: UserCreate
+        :return: CreateUser
         """
         user = User(email=email)
         user.set_password(password)
         user.save()
-        return UserCreate(user=user)
+        return CreateUser(user=user)
 
 
 class Mutation(ObjectType):
@@ -34,8 +34,8 @@ class Mutation(ObjectType):
     Allow mutations to create a new user, authenticate via JWT, and perform the essential
     JWT token actions (verify, refresh, delete)
     """
-    user_create = UserCreate.Field()
-    token_auth = ObtainJSONWebToken.Field()
+    create_user = CreateUser.Field()
+    authenticate_with_jwt = ObtainJSONWebToken.Field()
     verify_token = Verify.Field()
     refresh_token = Refresh.Field()
     delete_token_cookie = DeleteJSONWebTokenCookie.Field()
